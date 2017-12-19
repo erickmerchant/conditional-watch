@@ -1,0 +1,28 @@
+{
+  "name": "@erickmerchant/conditional-watch",
+  "version": "1.0.0",
+  "description": "Watch using recursive-watch or not",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickmerchant/conditional-watch.git"
+  },
+  "author": "Erick Merchant <erickmerchant@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erickmerchant/conditional-watch/issues"
+  },
+  "homepage": "https://github.com/erickmerchant/conditional-watch#readme",
+  "dependencies": {
+    "debounce-fn": "^1.0.0",
+    "recursive-watch": "^1.1.2"
+  },
+  "devDependencies": {
+    "mockery": "^2.1.0",
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
+  }
+}
