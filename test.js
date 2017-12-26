@@ -14,7 +14,7 @@ test('false', function (t) {
   })
 })
 
-test('true', function (t) {
+test('true - watching', function (t) {
   mockery.enable(mockerySettings)
 
   t.plan(4)
@@ -28,12 +28,38 @@ test('true', function (t) {
   mockery.registerMock('recursive-watch', function (directory, fn) {
     t.equal(directory, './foo')
 
-    fn()
+    fn('a-file')
   })
 
-  require('./index')(true, './foo', function () {
+  require('./index')(true, './foo', function (files) {
     t.ok(1)
   })
 
   mockery.disable()
+
+  mockery.deregisterAll()
+})
+
+test('true - debounced', function (t) {
+  mockery.enable(mockerySettings)
+
+  t.plan(2)
+
+  mockery.registerMock('recursive-watch', function (directory, fn) {
+    t.equal(directory, './foo')
+
+    fn('a-file')
+
+    fn('b-file')
+  })
+
+  require('./index')(true, './foo', function (files) {
+    if (files) {
+      t.deepEqual(files, ['a-file', 'b-file'])
+    }
+  })
+
+  mockery.disable()
+
+  mockery.deregisterAll()
 })
