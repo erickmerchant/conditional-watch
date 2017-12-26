@@ -6,12 +6,16 @@ const mockerySettings = {
   warnOnUnregistered: false
 }
 
-test('false', function (t) {
-  t.plan(1)
+test('false - returned value', function (t) {
+  t.plan(2)
 
-  require('./index')(false, './foo', function () {
+  let symbol = Symbol('testing')
+
+  t.equal(symbol, require('./index')(false, './foo', function () {
     t.ok(1)
-  })
+
+    return symbol
+  }))
 })
 
 test('true - watching', function (t) {

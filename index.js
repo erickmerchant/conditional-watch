@@ -17,5 +17,5 @@ module.exports = function (conditional, directory, fn, options) {
     })
   }
 
-  fn()
+  return fn()
 }
