@@ -67,3 +67,29 @@ test('true - debounced', function (t) {
 
   mockery.deregisterAll()
 })
+
+test('true - multiple', function (t) {
+  mockery.enable(mockerySettings)
+
+  t.plan(2)
+
+  let directories = []
+
+  mockery.registerMock('debounce-fn', function (fn, options) {
+    return fn
+  })
+
+  mockery.registerMock('recursive-watch', function (directory, fn) {
+    directories.push(directory)
+  })
+
+  require('./index')(true, ['./foo', './bar'], function (files) {
+    t.ok(1)
+
+    t.deepEqual(directories, ['./foo', './bar'])
+  })
+
+  mockery.disable()
+
+  mockery.deregisterAll()
+})

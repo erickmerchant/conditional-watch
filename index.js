@@ -1,7 +1,11 @@
 const watch = require('recursive-watch')
 const debounce = require('debounce-fn')
 
-module.exports = function (conditional, directory, fn, options) {
+module.exports = function (conditional, targets, fn, options) {
+  if (!Array.isArray(targets)) {
+    targets = [targets]
+  }
+
   if (conditional) {
     let files = []
     let debounced = debounce(function () {
@@ -10,10 +14,12 @@ module.exports = function (conditional, directory, fn, options) {
       files = []
     }, options || {wait: 150})
 
-    watch(directory, function (file) {
-      files.push(file)
+    targets.forEach(function (target) {
+      watch(target, function (file) {
+        files.push(file)
 
-      debounced()
+        debounced()
+      })
     })
   }
 
