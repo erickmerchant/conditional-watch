@@ -1,6 +1,6 @@
 {
   "name": "@erickmerchant/conditional-watch",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Watch using recursive-watch or not",
   "main": "index.js",
   "scripts": {
