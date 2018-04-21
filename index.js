@@ -14,13 +14,13 @@ module.exports = function (conditional, targets, fn, options) {
       files = []
     }, options || {wait: 150})
 
-    targets.forEach(function (target) {
+    for (let target of targets) {
       watch(target, function (file) {
         files.push(file)
 
         debounced()
       })
-    })
+    }
   }
 
   return fn()
