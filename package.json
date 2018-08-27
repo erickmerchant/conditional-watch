@@ -21,7 +21,7 @@
     "recursive-watch": "^1.1.4"
   },
   "devDependencies": {
-    "mockery": "^2.1.0",
+    "proxyquire": "^2.1.0",
     "standard": "^11.0.1",
     "tape": "^4.9.1"
   }
