@@ -2,9 +2,7 @@ const watch = require('recursive-watch')
 const debounce = require('debounce-fn')
 
 module.exports = function (conditional, targets, fn, options) {
-  if (!Array.isArray(targets)) {
-    targets = [targets]
-  }
+  targets = [].concat(targets)
 
   if (conditional) {
     let files = []
