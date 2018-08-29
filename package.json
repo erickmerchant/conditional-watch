@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/erickmerchant/conditional-watch#readme",
   "dependencies": {
-    "debounce-fn": "^1.0.0",
     "recursive-watch": "^1.1.4"
   },
   "devDependencies": {

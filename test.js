@@ -14,14 +14,9 @@ test('false - returned value', function (t) {
 })
 
 test('true - watching', function (t) {
-  t.plan(4)
+  t.plan(3)
 
   proxyquire('./index', {
-    'debounce-fn': function (fn, options) {
-      t.deepEqual(options, { wait: 150 })
-
-      return fn
-    },
     'recursive-watch': function (directory, fn) {
       t.equal(directory, './foo')
 
@@ -32,33 +27,12 @@ test('true - watching', function (t) {
   })
 })
 
-test('true - debounced', function (t) {
-  t.plan(2)
-
-  proxyquire('./index', {
-    'recursive-watch': function (directory, fn) {
-      t.equal(directory, './foo')
-
-      fn('a-file')
-
-      fn('b-file')
-    }
-  })(true, './foo', function (files) {
-    if (files) {
-      t.deepEqual(files, ['a-file', 'b-file'])
-    }
-  })
-})
-
 test('true - multiple', function (t) {
   t.plan(2)
 
   let directories = []
 
   proxyquire('./index', {
-    'debounce-fn': function (fn, options) {
-      return fn
-    },
     'recursive-watch': function (directory, fn) {
       directories.push(directory)
     }
