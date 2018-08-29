@@ -18,7 +18,7 @@ test('true - watching', function (t) {
 
   proxyquire('./index', {
     'debounce-fn': function (fn, options) {
-      t.deepEqual(options, {wait: 150})
+      t.deepEqual(options, { wait: 150 })
 
       return fn
     },

@@ -10,7 +10,7 @@ module.exports = function (conditional, targets, fn, options) {
       fn(files)
 
       files = []
-    }, options || {wait: 150})
+    }, options || { wait: 150 })
 
     for (let target of targets) {
       watch(target, function (file) {
