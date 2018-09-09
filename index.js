@@ -1,6 +1,6 @@
 const watch = require('recursive-watch')
 
-module.exports = function (conditional, targets, fn, options) {
+module.exports = (conditional, targets, fn, options) => {
   targets = [].concat(targets)
 
   if (conditional) {
